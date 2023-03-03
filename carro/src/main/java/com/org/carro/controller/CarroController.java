@@ -37,7 +37,7 @@ public class CarroController {
     @PostMapping("/registrar")
     public ResponseEntity<Carro> registrarCarro(@RequestBody Carro carro){
         Carro nuevoCarro = carroService.save(carro);
-        return ResponseEntity.ok(carro);
+        return ResponseEntity.ok(nuevoCarro);
     }
 
     @GetMapping("/buscaruser/{usuarioId}")
