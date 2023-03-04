@@ -1,6 +1,8 @@
 package com.org.usuario.controller;
 
 import com.org.usuario.entity.Usuario;
+import com.org.usuario.models.Carro;
+import com.org.usuario.models.Moto;
 import com.org.usuario.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,27 @@ public class UsuarioController {
     public ResponseEntity<Usuario> guardarUsuario(@RequestBody Usuario usuario){
         Usuario nuevoUsuario = usuarioService.save(usuario);
         return ResponseEntity.ok(usuario);
+    }
+
+    // *********************** OTROS METODOS ****************************
+    @GetMapping("/carro/{usuarioId}")
+    public ResponseEntity<List<Carro>> getCarros(@PathVariable("usuarioId") int id){
+        Usuario usuario = usuarioService.getUsuarioById(id);
+        if (usuario == null){
+            return ResponseEntity.notFound().build();
+        }
+        List<Carro> carros = usuarioService.getCarros(id);
+        return ResponseEntity.ok(carros);
+    }
+
+    @GetMapping("/moto/{usuarioId}")
+    public ResponseEntity<List<Moto>> getMotos(@PathVariable("usuarioId") int id){
+        Usuario usuario = usuarioService.getUsuarioById(id);
+        if (usuario == null){
+            return ResponseEntity.notFound().build();
+        }
+        List<Moto> motos = usuarioService.getMotos(id);
+        return ResponseEntity.ok(motos);
     }
 
 }

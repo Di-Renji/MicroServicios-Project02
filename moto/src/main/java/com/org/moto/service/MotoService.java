@@ -25,8 +25,8 @@ public class MotoService {
 
     // Registar Carro
     public Moto save(Moto moto){
-        Moto nuevoUsuario = motoRepository.save(moto);
-        return nuevoUsuario;
+        Moto nuevoMoto = motoRepository.save(moto);
+        return nuevoMoto;
     }
 
     public List<Moto> byUsuarioId(int usuarioId){

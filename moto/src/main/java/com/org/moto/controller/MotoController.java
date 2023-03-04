@@ -17,7 +17,7 @@ public class MotoController {
 
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Moto>> listarCarros(){
+    public ResponseEntity<List<Moto>> listarMotos(){
         List<Moto> motos = motoService.getAll();
         if (motos.isEmpty()){
             return ResponseEntity.noContent().build();
@@ -35,12 +35,12 @@ public class MotoController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<Moto> registrarCarro(@RequestBody Moto moto){
+    public ResponseEntity<Moto> registrarMoto(@RequestBody Moto moto){
         Moto nuevaMoto = motoService.save(moto);
         return ResponseEntity.ok(nuevaMoto);
     }
 
-    @GetMapping("/buscaruser/{usuarioId}")
+    @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<Moto>> listarMotosPorUsuarioId(@PathVariable("usuarioId") int id){
         List<Moto> motos = motoService.byUsuarioId(id);
         if (motos.isEmpty()){

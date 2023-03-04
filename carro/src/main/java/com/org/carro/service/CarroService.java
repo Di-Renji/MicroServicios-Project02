@@ -25,13 +25,12 @@ public class CarroService {
 
     // Registar Carro
     public Carro save(Carro carro){
-        Carro nuevoUsuario = carroRepository.save(carro);
-        return nuevoUsuario;
+        Carro nuevoCarro = carroRepository.save(carro);
+        return nuevoCarro;
     }
 
     public List<Carro> byUsuarioId(int usuarioId){
-        return carroRepository.findbyUsuario(usuarioId);
+        return carroRepository.findByUsuarioId(usuarioId);
     }
-
 
 }
